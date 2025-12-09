@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Exercicios: </title>
+</head>
+<body>
+
+    <script>
+        function fibo(quantidade){
+            let listaf = "";
+            let somaf = 0;     
+            let anterior = 1;   
+
+            for (let i = 0; i < quantidade; i++) { 
+                listaf += somaf + " ";
+                let temp = somaf;          
+                somaf = somaf + anterior; 
+                anterior = temp;           
+            }
+
+            return listaf;
+        }
+
+        function grauscal(){
+
+        let resultado = "Conversão de Celsius para Fahrenheit:\n\n";
+
+            for (let celsius = -20; celsius <= 30; celsius += 10) {
+                let fahrenheit = (celsius * 9 / 5) + 32;
+                resultado += celsius + " °C = " + fahrenheit + " °F\n";
+            }
+
+            resultado += "Formula Utilizada: (Celcius * 9/5) +32"
+
+            return resultado;
+
+            }
+
+            while(true){  
+
+                let opcao =  prompt("Por favor escolha uma das seguintes opções: \n (a) Fibonacci \n (b) Celcius \n (z) Para Sair")
+
+                if (opcao==="a"){
+                    qtd = prompt("Digite a quantidade de numeros que voce quer da lista de Fibonacci: ");
+                    alert(fibo(qtd));
+
+                } else if (opcao ==="b") {
+                    alert(grauscal())
+
+                } else if (opcao==="z"){
+                    break;
+                }
+                 else {
+                    alert("opcao nao é valida")
+                }
+        }
+    </script>
+    
+</body>
+</html>

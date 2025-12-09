@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício de Fibonacci</title>
+</head>
+<body>
+<script>
+  let quantidade = Number(prompt("Digite a quantidade de números do Fibonacci: "));
+  let listaf = "";
+  let somaf = 0;     
+  let anterior = 1;   
+
+  for (let i = 0; i < quantidade; i++) { 
+    listaf += somaf + " ";
+    let temp = somaf;          
+    somaf = somaf + anterior; 
+    anterior = temp;           
+  }
+  alert(listaf);
+</script>
+</body>
+</html>
