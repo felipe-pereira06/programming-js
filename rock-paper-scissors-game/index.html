@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Pedra Papel Tesoura</title>
+
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; text-align: center; padding-top: 50px; background-color: #f4f4f9; }
+        .setup { background: white; display: inline-block; padding: 30px; border-radius: 15px; shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        button { font-size: 18px; margin: 10px; padding: 12px 24px; cursor: pointer; border: none; border-radius: 8px; transition: 0.2s; }
+        button:hover { opacity: 0.8; transform: scale(1.05); }
+        .btn-pedra { background-color: #6c757d; color: white; }
+        .btn-papel { background-color: #ffc107; color: black; }
+        .btn-tesoura { background-color: #17a2b8; color: white; }
+        #resultado { font-weight: bold; font-size: 22px; margin-top: 20px; color: #333; }
+    </style>
+
+</head>
+<body>
+    <div class="setup">
+        <h1>Pedra, Papel e Tesoura</h1>
+        <p>Escolha sua jogada:</p>
+        <button class="btn-pedra" onclick="jogar('pedra')">🪨 Pedra</button>
+        <button class="btn-papel" onclick="jogar('papel')">📄 Papel</button>
+        <button class="btn-tesoura" onclick="jogar('tesoura')">✂️ Tesoura</button>
+        <p id="resultado">Aguardando jogada...</p>
+    </div>
+
+    <script>
+        function jogar(escolhaDoUsuario) 
+        {
+            const opcoes = ['pedra', 'papel', 'tesoura'];
+            
+            const escolhaDoComputador = opcoes[Math.floor(Math.random() * 3)];
+            let mensagem = "";
+
+            if (escolhaDoUsuario === escolhaDoComputador) {
+                mensagem = `Empate! Ambos escolheram ${escolhaDoUsuario}.`;
+            } else if (
+                (escolhaDoUsuario === 'pedra' && escolhaDoComputador === 'tesoura') ||
+                (escolhaDoUsuario === 'papel' && escolhaDoComputador === 'pedra') ||
+                (escolhaDoUsuario === 'tesoura' && escolhaDoComputador === 'papel')
+            ) 
+            {
+                mensagem = `Você Venceu! ${escolhaDoUsuario} ganha de ${escolhaDoComputador}.`;
+            } else {
+                mensagem = `Você Perdeu! ${escolhaDoComputador} ganha de ${escolhaDoUsuario}.`;
+            }
+            document.getElementById('resultado').innerText = mensagem;}
+    </script>
+</body>
+</html>

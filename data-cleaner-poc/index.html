@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Limpador de Dados POC</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; padding: 50px; background-color: #eef2f3; }
+        .painel { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 350px; }
+        input { width: 100%; padding: 12px; margin: 15px 0; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .feedback { margin-top: 20px; padding: 10px; background: #f8f9fa; border-radius: 6px; font-size: 14px; }
+        .destaque { color: #3343d6; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="painel">
+        <h3>Tratamento de Entrada</h3>
+        
+        <input type="text" id="campoCidade" placeholder="Digite o nome da cidade com espaços...">
+        <button onclick="processarEnvio()">Limpar e Enviar</button>
+        
+        <div class="feedback">
+            <strong>Texto Original:</strong> <span id="original" class="destaque"></span><br>
+            <strong>Texto Limpo:</strong> <span id="limpo" class="destaque" style="color: #198754;"></span>
+        </div>
+    </div>
+
+    <script>
+        function processarEnvio() {
+            const input = document.getElementById('campoCidade');
+            const valorOriginal = input.value;
+            
+            // remove espaços no início/fim -> transforma múltiplos espaços em 1
+            const valorLimpo = valorOriginal.trim().replace(/\s+/g, ' ');
+            
+            document.getElementById('original').innerText = `"${valorOriginal}"`;
+            document.getElementById('limpo').innerText = `"${valorLimpo}"`;
+            if (valorLimpo.length > 0) 
+            {
+                alert(`Dados prontos para API: ${valorLimpo}`);
+            } else {
+                alert("Por favor, digite algo!");
+            }
+        }
+    </script>
+</body>
+</html>
